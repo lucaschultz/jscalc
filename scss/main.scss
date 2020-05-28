@@ -1,0 +1,102 @@
+@import "base";
+
+body {
+    min-width: 100vh;
+    min-height: 100vh;
+    background-color: #1d1e1f;
+    color: #dfdfdf;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+header {
+    height: 20vh;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & h1 {
+        font-size: 5em;
+        font-weight: 700;
+    }
+    & h3 {
+        font-weight: 400;
+    }
+}
+
+section {
+    min-width: 100%;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    background-color: #2e2f30;
+    width: 400px;
+    height: 560px;
+    border-radius: 25px;
+    box-shadow: 0 13px 0 #242627;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 1fr 1.8fr;
+}
+
+.upper-part {
+    background-color: #444547;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-wrapper {
+    width: 85%;
+    height: 75%;
+    background-color: #ceffa4;
+    border-radius: 10px;
+    box-shadow: 0 0 20px -5px rgba(229, 255, 210, .5);
+}
+
+.lower-part {
+    margin: 10% 12%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-gap: 20px;
+}
+
+.button {
+    background-color: grey;
+    --box-shadow-color: black;
+    box-shadow: 0 3px 0 0 var(--box-shadow-color);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:active {
+        animation: button-click .3s ease-in-out;
+    }
+}
+
+@keyframes button-click {
+    50% {
+        transform: translateY(2px);
+        box-shadow: 0 1px 0 0 var(--box-shadow-color);        
+    }
+}
+
+.operator {
+    background-color: #737579;
+    --box-shadow-color: #4b4a4a;    
+}
+.digit {
+    background-color: #9a9da2;
+    --box-shadow-color: #5e5c5c;    
+}
+.equal {
+    background-color: #d57243;
+    --box-shadow-color: #6e4b3a;    
+}

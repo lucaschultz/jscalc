@@ -1,0 +1,128 @@
+/*
+  Oh Hello!
+
+  These are some base styles so that our tutorial looks good.
+
+  Let's go through the important bits real quick
+*/
+html {
+  /* border-box box model allows us to add padding and border to our elements without increasing their size */
+  box-sizing: border-box;
+  /* A system font stack so things load nice and quick! */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 600;
+  font-size: 16px; }
+
+/*
+  WAT IS THIS?!
+  We inherit box-sizing: border-box; from our <html> selector
+  Apparently this is a bit better than applying box-sizing: border-box; directly to the * selector
+*/
+*,
+*:before,
+*:after {
+  box-sizing: inherit; }
+
+body {
+  margin: 10px; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 5px 0; }
+
+body {
+  min-width: 100vh;
+  min-height: 100vh;
+  background-color: #1d1e1f;
+  color: #dfdfdf;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; }
+
+header {
+  height: 20vh;
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  header h1 {
+    font-size: 5em;
+    font-weight: 700; }
+  header h3 {
+    font-weight: 400; }
+
+section {
+  min-width: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.calculator {
+  background-color: #2e2f30;
+  width: 400px;
+  height: 560px;
+  border-radius: 25px;
+  box-shadow: 0 13px 0 #242627;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 1fr 1.8fr; }
+
+.upper-part {
+  background-color: #444547;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.display-wrapper {
+  width: 85%;
+  height: 75%;
+  background-color: #ceffa4;
+  border-radius: 10px;
+  box-shadow: 0 0 20px -5px rgba(229, 255, 210, 0.5); }
+
+.lower-part {
+  margin: 10% 12%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 20px; }
+
+.button {
+  background-color: grey;
+  --box-shadow-color: black;
+  box-shadow: 0 3px 0 0 var(--box-shadow-color);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .button:active {
+    -webkit-animation: button-click .3s ease-in-out;
+            animation: button-click .3s ease-in-out; }
+
+@-webkit-keyframes button-click {
+  50% {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 0 var(--box-shadow-color); } }
+
+@keyframes button-click {
+  50% {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 0 var(--box-shadow-color); } }
+
+.operator {
+  background-color: #737579;
+  --box-shadow-color: #4b4a4a; }
+
+.digit {
+  background-color: #9a9da2;
+  --box-shadow-color: #5e5c5c; }
+
+.equal {
+  background-color: #d57243;
+  --box-shadow-color: #6e4b3a; }
