@@ -1,0 +1,42 @@
+
+@mixin no-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+@mixin neutral-buttons {
+    display: inline-block;
+    border: none;
+    padding: none;
+    margin: 0;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: inherit;
+    transition: unset;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    color: inherit;
+    background-color: inherit;
+
+    &:hover,
+    &:focus {
+        // background: inherit;
+    }
+
+    &:focus {
+        outline: unset;
+        outline-offset: unset;
+    }
+
+    &:active {
+        transform: unset;
+        color: inherit;
+    }
+}

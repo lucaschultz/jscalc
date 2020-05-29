@@ -7,6 +7,7 @@
     <meta name="author" content="Max Sauerzapf & Luca Schultz">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" type="module" defer></script>
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
   </head>
   <body>
@@ -15,31 +16,47 @@
       <h3>Ein einfacher Javascript Taschenrechner</h3>
     </header>
     <section>
-      <div class="calculator">
+      <div id="calculator">
         <div class="upper-part">
-          <div class="display-wrapper"></div>
+          <div class="display-wrapper">
+            <div class="input">1 + 2 * 3 - (5 + 2) / 10 - 12</div>
+            <div class="history-wrapper">
+              <div class="history-line">1 + 41 = 42</div>
+              <div class="history-line">1 + 2 * 3 - (5 + 2) / 10 - 12 * 10 / 25 + 5 - 4</div>
+              <div class="history-line">1 + 41 = 42</div>
+              <div class="history-line">1 + 41 = 42</div>
+              <div class="history-line">1 + 41 = 42</div>
+              <div class="history-line">1 + 41 = 42</div>
+              <div class="history-line">1 + 41 = 42</div>
+              <div class="history-line">1 + 41 = 42</div>
+              <div class="history-line">1 + 41 = 42</div>
+              <div class="history-line">1 + 41 = 42</div>
+            </div>
+          </div>
         </div>
         <div class="lower-part">
-          <div class="button button1 operator sqrt">√</div>
-          <div class="button button2 operator power">x<sup>y</sup></div>
-          <div class="button button3 operator open-paren">(</div>
-          <div class="button button4 operator close-paren">)</div>
-          <div class="button button5 operator division">÷</div>
-          <div class="button button6 digit">9</div>
-          <div class="button button7 digit">8</div>
-          <div class="button button8 digit">7</div>
-          <div class="button button9 operator times">×</div>
-          <div class="button button10 digit">6</div>
-          <div class="button button11 digit">5</div>
-          <div class="button button12 digit">4</div>
-          <div class="button button13 operator sub">−</div>
-          <div class="button button14 digit">3</div>
-          <div class="button button15 digit">2</div>
-          <div class="button button16 digit">1</div>
-          <div class="button button17 operator add">+</div>
-          <div class="button button18 operator comma">,</div>
-          <div class="button button19 digit">0</div>
-          <div class="button button20 equal">=</div>
+          <div class="button-wrapper">
+            <button class="calculator-button operator" id="sqrt">√</button>
+            <button class="calculator-button operator" id="power">x<sup>y</sup></button>
+            <button class="calculator-button operator" id="openParen">(</button>
+            <button class="calculator-button operator" id="closeParen">)</button>
+            <button class="calculator-button operator" id="division">÷</button>
+            <button class="calculator-button digit" id="nine">9</button>
+            <button class="calculator-button digit" id="eight">8</button>
+            <button class="calculator-button digit" id="seven">7</button>
+            <button class="calculator-button operator" id="multiplication">×</button>
+            <button class="calculator-button digit">6</button>
+            <button class="calculator-button digit" id="five">5</button>
+            <button class="calculator-button digit" id="four">4</button>
+            <button class="calculator-button operator" id="subtraction">−</button>
+            <button class="calculator-button digit" id="three">3</button>
+            <button class="calculator-button digit" id="two">2</button>
+            <button class="calculator-button digit" id="one">1</button>
+            <button class="calculator-button operator" id="addition">+</button>
+            <button class="calculator-button operator" id="comma">,</button>
+            <button class="calculator-button digit" id="zero">0</button>
+            <button class="calculator-button operator" id="equality">=</button>
+          </div>
         </div>
       </div>
     </section>

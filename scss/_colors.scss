@@ -1,0 +1,31 @@
+
+$colors: (
+    "bg-dark": rgba(29, 30, 31, 1.00),
+    "bg-accent-dark": rgba(39, 40, 41, 1.00),
+    "text-dark": rgba(223, 223, 223, 1.00),
+    "text-accent-dark": rgba(195, 195, 195, 1.00),
+    "calculator-body-dark": rgba(46, 47, 48, 1.00),
+    "calculator-body-edge-dark": rgba(35, 38, 39, 1.00),
+    "calculator-body-shadow-dark": rgba(0, 0, 0, .5),
+    "calculator-accent-dark": rgba(68, 69, 71, 1.00),
+    "button-text-dark": rgba(223, 223, 223, 1.00),
+    "digit-dark": rgba(155, 157, 162, 1.00),
+    "digit-edge-dark": rgba(94, 92, 92, 1.00),
+    "operator-dark": rgba(115, 117, 121, 1.00),
+    "operator-edge-dark": rgba(75, 74, 74, 1.00),
+    "equality-dark": rgba(213, 114, 67, 1.00),
+    "equality-edge-dark": rgba(109, 75, 58, 1.00),
+    "display-dark": rgba(206, 255, 165, 1.00),
+    "display-glow-dark": rgba(229, 255, 210, .5),
+    "display-text-dark": rgba(79, 113, 54, 1.00),
+    "display-text-accent-dark": rgba(79, 113, 54, .7),
+);
+
+
+:root {
+    @each $name, $color in $colors {
+        @if str-index($name, "dark") {
+            --#{str-slice($name, 0, -6)}: #{$color};
+        }
+    }
+}
