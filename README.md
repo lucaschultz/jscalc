@@ -1,6 +1,6 @@
 # JS Calc - A Ludicrously Simple Calculator
 
-This calculator is based on HTML, CSS and Javascript and was created for a beginner project of the lecture *Web- und XML-Technologien* at the ![Instute of Computer Science](https://www.informatik.uni-bonn.de/de) of the ![Rheinische Friedrich-Wilhelms-Universität Bonn](https://www.uni-bonn.de). The resulting static page is available ![here](https://lucaschultz.github.io/jscalc/).
+This calculator is based on HTML, CSS and Javascript and was created for a beginner project of the lecture *Web- und XML-Technologien* at the [Instute of Computer Science](https://www.informatik.uni-bonn.de/de) of the [Rheinische Friedrich-Wilhelms-Universität Bonn](https://www.uni-bonn.de). The resulting static page is available [here](https://lucaschultz.github.io/jscalc/).
 
 ### Code Quality
 
@@ -14,7 +14,7 @@ It's a calculator! A few not so obvious details are:
 
 - Automatic darkmode, triggered by the `@media (prefers-color-scheme: dark)` media query
 - Enter calculations using the keyboard
--
+
 ### TODO
 
 - [ ] Add actual calculator functionality
