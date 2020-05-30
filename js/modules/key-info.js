@@ -82,29 +82,17 @@ let displayToCalculation = {
     "^": "**"
 }
 
-// let calculationToDisplay = {
-//     "Math.sqrt": "√",
-//     "**": "^"
-// }
-
-function substituteToCalculation(str) {
-  for (let [display, calc] of Object.entries(displayToCalculation)) {
+function substituteForCalculation(str, substitutions=displayToCalculation) {
+  for (let [display, calc] of Object.entries(substitutions)) {
     str = str.replace(display, calc);
   }
   return str;
 }
 
-// function substituteToDisplay(str) {
-//   for (let [calc, display] of Object.entries(calculationToDisplay)) {
-//     str = str.replace(calc, display);
-//   }
-//   return str;
-// }
-
 function calculate(str) {
     if (str === "") {return "There goes nothing!"}
   let processed = str.replace(/[^0-9. +\-*\/()√^]/g, "");
-  processed = substituteToCalculation(processed);
+  processed = substituteForCalculation(processed);
   console.log(processed);
   let result;
   try {
