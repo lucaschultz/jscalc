@@ -33,7 +33,7 @@ let regularButtons = {
     },
     "division": {
         "keys": ["/"],
-        "onPress": "/",
+        "onPress": " / ",
         "substitute": {
             "html": " / ",
             "calc": " / "
