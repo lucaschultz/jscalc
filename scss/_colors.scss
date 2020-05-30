@@ -1,9 +1,11 @@
 
 $colors: (
+    // Darkmode
     "bg-dark": rgba(29, 30, 31, 1.00),
     "bg-accent-dark": rgba(39, 40, 41, 1.00),
-    "text-dark": rgba(223, 223, 223, 1.00),
-    "text-accent-dark": rgba(195, 195, 195, 1.00),
+    "text-primary-dark": rgba(223, 223, 223, 1.00),
+    "text-secondary-dark": rgba(150, 150, 160, 1.00),
+    "text-accent-dark": rgba(130, 130, 140, 1.00),
     "calculator-body-dark": rgba(46, 47, 48, 1.00),
     "calculator-body-edge-dark": rgba(35, 38, 39, 1.00),
     "calculator-body-shadow-dark": rgba(0, 0, 0, .5),
@@ -17,15 +19,47 @@ $colors: (
     "equality-edge-dark": rgba(109, 75, 58, 1.00),
     "display-dark": rgba(206, 255, 165, 1.00),
     "display-glow-dark": rgba(229, 255, 210, .5),
-    "display-text-dark": rgba(79, 113, 54, 1.00),
-    "display-text-accent-dark": rgba(79, 113, 54, .7),
+    "display-text-primary-dark": rgba(79, 113, 54, 1.00),
+    "display-text-secondary-dark": rgba(79, 113, 54, .7),
+    "display-text-accent-dark": rgba(79, 113, 54, .1),
+    // Lightmode
+    "bg-light": rgba(231, 231, 231, 1.00),
+    "bg-accent-light": rgba(255, 255, 255, 1.00),
+    "text-primary-light": rgba(43, 45, 67, 1.00),
+    "text-secondary-light": rgba(80, 80, 95, 1.00),
+    "text-accent-light":  rgba(100, 100, 125, 1.00),
+    "calculator-body-light": rgba(215, 215, 215, 1.00),
+    "calculator-body-edge-light": rgba(180, 180, 180, 1.00),
+    "calculator-body-shadow-light": rgba(0, 0, 0, .2),
+    "calculator-accent-light": rgba(205, 205, 205, 1.00),
+    "button-text-light": rgba(146, 146, 152, 1.00),
+    "digit-light": rgba(235, 235, 235, 1.00),
+    "digit-edge-light": rgba(185, 185, 185, 1.00),
+    "operator-light": rgba(185, 185, 185, 1.00),
+    "operator-edge-light": rgba(160, 160, 160, 1.00),
+    "equality-light": rgba(233, 134, 87, 1.00),
+    "equality-edge-light": rgba(129, 95, 78, 1.00),
+    "display-light": rgba(226, 255, 185, 1.00),
+    "display-glow-light": rgba(229, 255, 210, 1),
+    "display-text-primary-light": rgba(99, 133, 74, 1.00),
+    "display-text-secondary-light": rgba(79, 113, 54, .6),
+    "display-text-accent-light": rgba(79, 113, 54, .1),
 );
 
 
 :root {
+    // Colors for the default light mode
     @each $name, $color in $colors {
-        @if str-index($name, "dark") {
-            --#{str-slice($name, 0, -6)}: #{$color};
+        @if str-index($name, "light") {
+            --#{str-slice($name, 0, -7)}: #{$color};
+        }
+    }
+    // Colors for dark mode
+    @media (prefers-color-scheme: dark) {
+        @each $name, $color in $colors {
+            @if str-index($name, "dark") {
+                --#{str-slice($name, 0, -6)}: #{$color};
+            }
         }
     }
 }

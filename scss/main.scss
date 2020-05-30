@@ -3,10 +3,10 @@
 @import "colors";
 
 body {
-    min-width: 100vh;
+    min-width: 100vw;
     min-height: 100vh;
     background-color: var(--bg);
-    color: var(--text);
+    color: var(--text-primary);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -19,13 +19,26 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    & h1 {
-        font-size: 5em;
-        font-weight: 700;
-    }
-    & h3 {
-        font-weight: 400;
-    }
+}
+
+h1 {
+    font-size: 4em;
+    font-weight: 900;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+sup, sub {
+    font-size: .6em;
+    position: relative;
+    vertical-align: baseline;
+    top: -0.4em;
+}
+
+sub { 
+    top: 0.4em;
 }
 
 section {
@@ -36,13 +49,47 @@ section {
     align-items: center;
 }
 
+footer {
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-secondary);
+    font-size: .7em;
+    font-weight: 500;
+    line-height: 2em;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    position: relative;
+    font-weight: 700;
+    &::after {
+        content: "";
+        position: absolute;
+        width: 60%;
+        height: 1px;
+        background-color: var(--text-accent);
+        left: 20%;
+        bottom: -18%;
+        transition: width .2s linear, left .2s linear;
+    }
+    &:hover::after {
+        width: 90%;
+        left: 5%;
+    }
+}
+
 #calculator {
     background-color: var(--calculator-body);
-    width: 400px;
-    max-width: 400px;
-    height: 560px;
-    border-radius: 25px;
-    box-shadow: 0 20px 0 var(--calculator-body-edge);
+    width: 39.3vh;
+    max-width: 39.3vh;
+    height: 55vh;
+    border-radius: 3vh;
+    box-shadow: 0 2vh 0 var(--calculator-body-edge), .5vh 5vh 7.5vh -0.5vh var(--calculator-body-shadow);
     overflow: hidden;
     display: grid;
     grid-template-rows: minmax(40%, 40%) minmax(60%, 60%);
@@ -58,22 +105,22 @@ section {
 @keyframes calc-hover {
     from {
         transform: scale(1);
-        box-shadow: 0 20px 0 var(--calculator-body-edge);
+        box-shadow: 0 2vh 0 var(--calculator-body-edge), .5vh 5vh 7.5vh -0.5vh var(--calculator-body-shadow);
     }
     to {
         transform: scale(1.02);
-        box-shadow: 0 20px 0 var(--calculator-body-edge), 10px 50px 80px -10px var(--calculator-body-shadow);
+        box-shadow: 0 2vh 0 var(--calculator-body-edge), 1vh 10vh 15vh -1vh var(--calculator-body-shadow);
     }
 }
 
 @keyframes calc-unhover {
     from {
         transform: scale(1.02);
-        box-shadow: 0 20px 0 var(--calculator-body-edge), 10px 50px 80px -10px var(--calculator-body-shadow);        
+        box-shadow: 0 2vh 0 var(--calculator-body-edge), 1vh 10vh 15vh -1vh var(--calculator-body-shadow);        
     }
     to {
         transform: scale(1);
-        box-shadow: 0 20px 0 var(--calculator-body-edge);
+        box-shadow: 0 2vh 0 var(--calculator-body-edge), .5vh 5vh 7.5vh -0.5vh var(--calculator-body-shadow);
     }
 }
 
@@ -86,12 +133,11 @@ section {
 }
 
 .display-wrapper {
-    padding: 0 2% 0 0;
     width: 85%;
     height: 75%;
     background-color: var(--display);
-    border-radius: 10px;
-    box-shadow: 0 0 20px -5px var(--display-glow);
+    border-radius: 1.5vh;
+    box-shadow: 0 0 1vh -0.5vh var(--display-glow);
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-end;
@@ -99,12 +145,13 @@ section {
 }
 
 .input {
+    padding: 0 2% 0 0;
     flex-basis: 30%;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
-    color: var(--display-text);
-    font-size: 1.5em;
+    color: var(--display-text-primary);
+    font-size: 1.25em;
     white-space: nowrap;
     max-width: 100%;
     overflow-x: scroll;
@@ -115,6 +162,7 @@ section {
 }
 
 .history-wrapper {
+    padding: 0 2% 0 0;
     flex-basis: 70%;
     flex-grow: 0;
     width: 100%;
@@ -124,7 +172,8 @@ section {
     align-items: flex-end;
     max-height: 80%;
     overflow-y: scroll;
-    color: var(--display-text-accent);
+    border-bottom: 1px solid var(--display-text-accent);
+    color: var(--display-text-secondary);
     &::-webkit-scrollbar {
         display: none;
     }
@@ -135,7 +184,10 @@ section {
     max-width: 100%;
     display: flex;
     flex-direction: row-reverse;
-    margin: 2px 2px;
+    margin: .2vh 0;
+    &:first-child {
+        margin-bottom: .8vh;
+    }
     white-space: nowrap;
     overflow-x: scroll;
     &::-webkit-scrollbar {
@@ -147,6 +199,7 @@ section {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -157,50 +210,50 @@ section {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    grid-gap: 20px;
+    grid-gap: 2vh;
 }
 
 .calculator-button {
     @include no-select;
     @include neutral-buttons;
+    box-sizing: border-box;
     background-color: var(--digit);
     --edge-color: var(--digit-edge);
-    box-shadow: 0 4px 0 0 var(--edge-color);
-    border-radius: 5px;
+    box-shadow: 0 .6vh 0 0 var(--edge-color);
+    border-radius: .4vh;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: box-shadow .05s linear, transform .05s linear;
     transform: translateY(0px);
+    &.pressed {
+        animation: button-press .1s ease-in-out forwards;
+    }
+    &.released {
+        animation: button-release .1s ease-in-out forwards;
+    }
 }
 
-.pressed {
-    animation: button-press .1s ease-in-out forwards;
-}
-
-.released {
-    animation: button-release .1s ease-in-out forwards;
-}
 
 @keyframes button-press {
     from {
-        transform: translateY(0px);
-        box-shadow: 0 3px 0 0 var(--edge-color);        
+        transform: translateY(0vh);
+        box-shadow: 0 .6vh 0 0 var(--edge-color);        
     }
     to {
-        transform: translateY(3px);
-        box-shadow: 0 1px 0 0 var(--edge-color);        
+        transform: translateY(.4vh);
+        box-shadow: 0 .2vh 0 0 var(--edge-color);        
     }
 }
 
 @keyframes button-release {
     from {
-        transform: translateY(3px);
-        box-shadow: 0 1px 0 0 var(--edge-color);        
+        transform: translateY(.4vh);
+        box-shadow: 0 .2vh 0 0 var(--edge-color);        
     }
     to {
-        transform: translateY(0px);
-        box-shadow: 0 3px 0 0 var(--edge-color);        
+        transform: translateY(0vh);
+        box-shadow: 0 .6vh 0 0 var(--edge-color);        
     }
 }
 
