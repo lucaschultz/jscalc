@@ -162,17 +162,18 @@ a {
 
 }
 
-.history-wrapper {
+#history-wrapper {
     padding: 0 2% 0 0;
     flex-basis: 70%;
     flex-grow: 0;
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
+    justify-content: flex-end;
     align-items: flex-end;
     max-height: 80%;
-    overflow-y: scroll;
+    overflow: scroll;
     border-bottom: 1px solid var(--display-text-accent);
     color: var(--display-text-secondary);
     &::-webkit-scrollbar {

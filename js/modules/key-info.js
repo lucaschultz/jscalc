@@ -1,166 +1,126 @@
 let regularButtons = {
     "sqrt": {
         "keys": ["Q", "q"],
-        "onPress": "√(",
-        "substitute": {
-            "html": "√",
-            "calc": "Math.sqrt"
-        }
+        "onPress": "√("
     },
     "power": {
         "keys": ["Dead"],
-        "onPress": "^(",
-        "substitute": {
-            "html": "^",
-            "calc": "Math.pow"
-        }
+        "onPress": "^("
     },
     "openParen": {
         "keys": ["("],
-        "onPress": "(",
-        "substitute": {
-            "html": "(",
-            "calc": "("
-        }
+        "onPress": "("
     },
     "closeParen": {
         "keys": [")"],
-        "onPress": ")",
-        "substitute": {
-            "html": ")",
-            "calc": ")"
-        }
+        "onPress": ")"
     },
     "division": {
         "keys": ["/"],
-        "onPress": " / ",
-        "substitute": {
-            "html": " / ",
-            "calc": " / "
-        }
+        "onPress": " / "
     },
     "nine": {
         "keys": ["9"],
-        "onPress": "9",
-        "substitute": {
-            "html": "9",
-            "calc": "9"
-        }
+        "onPress": "9"
     },
     "eight": {
         "keys": ["8"],
-        "onPress": "8",
-        "substitute": {
-            "html": "8",
-            "calc": "8"
-        }
+        "onPress": "8"
     },
     "seven": {
         "keys": ["7"],
-        "onPress": "7",
-        "substitute": {
-            "html": "7",
-            "calc": "7"
-        }
+        "onPress": "7"
     },
     "multiplication": {
         "keys": ["*"],
-        "onPress": " * ",
-        "substitute": {
-            "html": " * ",
-            "calc": " * "
-        }
+        "onPress": " * "
     },
     "six": {
         "keys": ["6"],
-        "onPress": "6",
-        "substitute": {
-            "html": "6",
-            "calc": "6"
-        }
+        "onPress": "6"
     },
     "five": {
         "keys": ["5"],
-        "onPress": "5",
-        "substitute": {
-            "html": "5",
-            "calc": "5"
-        }
+        "onPress": "5"
     },
     "four": {
         "keys": ["4"],
-        "onPress": "4",
-        "substitute": {
-            "html": "4",
-            "calc": "4"
-        }
+        "onPress": "4"
     },
     "subtraction": {
         "keys": ["-"],
-        "onPress": " - ",
-        "substitute": {
-            "html": " - ",
-            "calc": " - "
-        }
+        "onPress": " - "
     },
     "three": {
         "keys": ["3"],
-        "onPress": "3",
-        "substitute": {
-            "html": "3",
-            "calc": "3"
-        }
+        "onPress": "3"
     },
     "two": {
         "keys": ["2"],
-        "onPress": "2",
-        "substitute": {
-            "html": "2",
-            "calc": "2"
-        }
+        "onPress": "2"
     },
     "one": {
         "keys": ["1"],
-        "onPress": "1",
-        "substitute": {
-            "html": "1",
-            "calc": "1"
-        }
+        "onPress": "1"
     },
     "addition": {
         "keys": ["+"],
-        "onPress": " + ",
-        "substitute": {
-            "html": " + ",
-            "calc": " + "
-        }
+        "onPress": " + "
     },
     "comma": {
         "keys": [".", ","],
-        "onPress": ".",
-        "substitute": {
-            "html": ".",
-            "calc": "."
-        }
+        "onPress": "."
     },
     "zero": {
         "keys": ["0"],
-        "onPress": "0",
-        "substitute": {
-            "html": "0",
-            "calc": "0"
-        }
+        "onPress": "0"
     }
 }
 
-let equalityButton = {
-    "id": "comma",
-    "keys": [".", ","],
-    "onPress": ".",
-    "substitute": {
-        "html": ".",
-        "calc": "."
-    }
+let displayToCalculation = {
+    "√": "Math.sqrt",
+    "^": "**"
 }
 
-export { equalityButton, regularButtons };
+// let calculationToDisplay = {
+//     "Math.sqrt": "√",
+//     "**": "^"
+// }
+
+function substituteToCalculation(str) {
+  for (let [display, calc] of Object.entries(displayToCalculation)) {
+    str = str.replace(display, calc);
+  }
+  return str;
+}
+
+// function substituteToDisplay(str) {
+//   for (let [calc, display] of Object.entries(calculationToDisplay)) {
+//     str = str.replace(calc, display);
+//   }
+//   return str;
+// }
+
+function calculate(str) {
+    if (str === "") {return "There goes nothing!"}
+  let processed = str.replace(/[^0-9. +\-*\/()√^]/g, "");
+  processed = substituteToCalculation(processed);
+  console.log(processed);
+  let result;
+  try {
+    result = eval(processed);
+  } catch (error) {
+    return "Error";
+  }
+  return str + " = " + result;
+}
+
+function appendToHistory(str, historyNode) {
+  let line = document.createElement('div');
+  line.classList.add("history-line");
+  line.innerHTML = str;
+  historyNode.appendChild(line);
+}
+
+export { appendToHistory, calculate ,regularButtons };
+
