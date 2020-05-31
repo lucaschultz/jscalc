@@ -16,7 +16,7 @@ document.body.addEventListener('keydown', function(event) {
     button.classList.add("pressed");
     button.classList.remove("released");    
     let history = document.getElementById("history-wrapper");
-    appendToHistory(calculate(input.innerHTML), history);
+    appendToHistory(calculate(input.innerHTML), history, input);
     history.scrollTo(0, history.scrollHeight-history.clientHeight);
     input.innerHTML = "";
   }
@@ -87,7 +87,7 @@ for (let button of calculatorButtons) {
           input.innerHTML += buttonInfo["onPress"];
         } else if (button.id === "equality") {
           let history = document.getElementById("history-wrapper");
-          appendToHistory(calculate(input.innerHTML), history);
+          appendToHistory(calculate(input.innerHTML), history, input);
           history.scrollTo(0, history.scrollHeight-history.clientHeight);
           input.innerHTML = "";
         }

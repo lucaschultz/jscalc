@@ -249,11 +249,24 @@ a {
     display: none; }
 
 .history-line {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
   flex-shrink: 0;
   max-width: 100%;
   display: flex;
   flex-direction: row-reverse;
   margin: .2vh 0;
+  cursor: pointer;
   white-space: nowrap;
   overflow-x: scroll; }
   .history-line:first-child {

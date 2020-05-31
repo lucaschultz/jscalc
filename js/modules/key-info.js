@@ -90,24 +90,35 @@ function substituteForCalculation(str, substitutions=displayToCalculation) {
 }
 
 function calculate(str) {
-  if (str === "") {return "There goes nothing!"}
+  if (str === "") {return " = Nothing!"}
   let processed = str.replace(/[^0-9. +\-*\/()√^]/g, "");
   processed = substituteForCalculation(processed);
   console.log(processed);
   let result;
   try {
     result = eval(processed);
-    result = result.toFixed(3)
+    result = result.toFixed(2)
   } catch (error) {
-    return "Error";
+    return str + " = Error";
   }
   return str + " = " + result;
 }
 
-function appendToHistory(str, historyNode) {
+function appendToHistory(str, historyNode, input) {
+  // Create new line and ...
   let line = document.createElement('div');
+  // ... add history-line class to it and ...
   line.classList.add("history-line");
+  // ... set the str from input as its content
   line.innerHTML = str;
+
+  // Add an event listener to line ...
+  line.addEventListener('click', function() {
+    // ... which sets input to be the part of the line before " = " 
+    input.innerHTML = line.innerHTML.split(" = ")[0];
+  });
+
+  // Finally append it to history
   historyNode.appendChild(line);
 }
 

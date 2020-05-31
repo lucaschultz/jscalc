@@ -182,11 +182,13 @@ a {
 }
 
 .history-line {
+    @include no-select;
     flex-shrink: 0;
     max-width: 100%;
     display: flex;
     flex-direction: row-reverse;
     margin: .2vh 0;
+    cursor: pointer;
     &:first-child {
         margin-bottom: .8vh;
     }
