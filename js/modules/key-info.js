@@ -90,13 +90,14 @@ function substituteForCalculation(str, substitutions=displayToCalculation) {
 }
 
 function calculate(str) {
-    if (str === "") {return "There goes nothing!"}
+  if (str === "") {return "There goes nothing!"}
   let processed = str.replace(/[^0-9. +\-*\/()√^]/g, "");
   processed = substituteForCalculation(processed);
   console.log(processed);
   let result;
   try {
     result = eval(processed);
+    result = result.toFixed(3)
   } catch (error) {
     return "Error";
   }
