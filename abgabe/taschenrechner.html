@@ -1,20 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
     <meta charset="utf-8">
     <title>JS Calc</title>
     <meta name="description" content="Einfacher Javascript Taschenrechner">
     <meta name="author" content="Max Sauerzapf & Luca Schultz">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js" type="module" defer></script>
+    <link rel="stylesheet" href="taschenrechner.css">
+    <script src="taschenrechner.js" type="module"></script>
+    <script src="math-library.js" type="module"></script>
   </head>
   <body>
     <header>
       <h1>JS Calc</h1>
       <h3>A Ludicrously Simple Calculator</h3>
+      <!-- 
+        
+        Lösung zu Web- und XML-Technologien - Aufgabe 10 von:
+          Luca Schultz - s6lcschu
+          Max Sauerzapf - s6mnsaue
+
+       -->
     </header>
-    <section>
+    <main>
       <div id="calculator">
         <div class="upper-part">
           <div class="display-wrapper">
@@ -47,12 +55,11 @@
           </div>
         </div>
       </div>
-    </section>
+    </main>
     <footer>
-        <div>Developed by <a href="https://github.com/lucaschultz">Luca Schultz</a> and <a href="https://github.com/MrsSnowWhite">Max S.</a></div>
+        <div>Developed by <a href="https://github.com/lucaschultz">Luca Schultz</a> and <a href="https://github.com/MrsSnowWhite">Max Sauerzapf</a></div>
         <div>for <em>Web- und XML-Technologien</em> at the <a href="https://www.informatik.uni-bonn.de/de">University of Bonn</a></div>
-        <div>The code lives in a <a href="https://github.com/lucaschultz/jscalc">Github Repository</a></div>
-        <div>Hosted on <a href="https://pages.github.com">Github Pages</a></div>
+        <div>A slightly <a href="https://lucaschultz.github.io/jscalc/">different version</a> is hosted on <a href="https://pages.github.com">Github Pages</a></div>
     </footer>
   </body>
 </html>

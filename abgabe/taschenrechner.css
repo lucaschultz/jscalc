@@ -1,0 +1,394 @@
+
+/*
+
+Lösung zu Web- und XML-Technologien - Aufgabe 10 von:
+  Luca Schultz - s6lcschu
+  Max Sauerzapf - s6mnsaue
+
+*/
+
+html {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 600;
+  font-size: 2vh; }
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit; }
+
+body {
+  margin: 10px; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 5px 0; }
+
+body {
+  min-width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #e7e7e7;
+  color: #2b2d43;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; }
+
+header {
+  height: 20vh;
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+h1 {
+  font-size: 4em;
+  font-weight: 900; }
+
+h3 {
+  font-size: 1.2em; }
+
+sup, sub {
+  font-size: .6em;
+  position: relative;
+  vertical-align: baseline;
+  top: -0.4em; }
+
+sub {
+  top: 0.4em; }
+
+main {
+  min-width: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+footer {
+  width: 100vw;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #50505f;
+  font-size: .7em;
+  font-weight: 500;
+  line-height: 2em; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  font-weight: 700; }
+  a::after {
+    content: "";
+    position: absolute;
+    width: 60%;
+    height: 1px;
+    background-color: #64647d;
+    left: 20%;
+    bottom: -18%;
+    transition: width .2s linear, left .2s linear; }
+  a:hover::after {
+    width: 90%;
+    left: 5%; }
+
+#calculator {
+  background-color: #d7d7d7;
+  width: 39.3vh;
+  max-width: 39.3vh;
+  height: 55vh;
+  border-radius: 3vh;
+  box-shadow: 0 2vh 0 #b4b4b4, 0.5vh 5vh 7.5vh -0.5vh rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: minmax(40%, 40%) minmax(60%, 60%);
+  grid-template-columns: minmax(100%, 100%); }
+  #calculator.hovered {
+    -webkit-animation: calc-hover .2s ease-in-out forwards;
+            animation: calc-hover .2s ease-in-out forwards; }
+  #calculator.unhovered {
+    -webkit-animation: calc-unhover .2s ease-in-out forwards;
+            animation: calc-unhover .2s ease-in-out forwards; }
+
+@-webkit-keyframes calc-hover {
+  from {
+    transform: scale(1);
+    box-shadow: 0 2vh 0 #b4b4b4, 0.5vh 5vh 7.5vh -0.5vh rgba(0, 0, 0, 0.2);}
+  to {
+    transform: scale(1.02);
+    box-shadow: 0 2vh 0 #b4b4b4, 1vh 10vh 15vh -1vh rgba(0, 0, 0, 0.2); }}
+
+@keyframes calc-hover {
+  from {
+    transform: scale(1);
+    box-shadow: 0 2vh 0 #b4b4b4, 0.5vh 5vh 7.5vh -0.5vh rgba(0, 0, 0, 0.2);}
+  to {
+    transform: scale(1.02);
+    box-shadow: 0 2vh 0 #b4b4b4, 1vh 10vh 15vh -1vh rgba(0, 0, 0, 0.2); }}
+
+@-webkit-keyframes calc-unhover {
+  from {
+    transform: scale(1.02);
+    box-shadow: 0 2vh 0 #b4b4b4, 1vh 10vh 15vh -1vh rgba(0, 0, 0, 0.2);}
+  to {
+    transform: scale(1);
+    box-shadow: 0 2vh 0 #b4b4b4, 0.5vh 5vh 7.5vh -0.5vh rgba(0, 0, 0, 0.2); }}
+
+@keyframes calc-unhover {
+  from {
+    transform: scale(1.02);
+    box-shadow: 0 2vh 0 #b4b4b4, 1vh 10vh 15vh -1vh rgba(0, 0, 0, 0.2);}
+  to {
+    transform: scale(1);
+    box-shadow: 0 2vh 0 #b4b4b4, 0.5vh 5vh 7.5vh -0.5vh rgba(0, 0, 0, 0.2); }}
+
+.upper-part {
+  background-color: #cdcdcd;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.display-wrapper {
+  width: 85%;
+  height: 75%;
+  background-color: #e2ffb9;
+  border-radius: 1.5vh;
+  box-shadow: 0 0 1vh -0.5vh #e5ffd2;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  font-family: monospace; }
+
+.input {
+  padding: 0 2% 0 0;
+  flex-basis: 30%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  color: #63854a;
+  font-size: 1.25em;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow-x: scroll;
+  /* Throws error in validation, but exists! Probably to new ... */
+  /* See: https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width; */
+  scrollbar-width: none; }
+  .input::-webkit-scrollbar {
+    display: none; }
+
+#history-wrapper {
+  padding: 0 2% 0 0;
+  flex-basis: 70%;
+  flex-grow: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  max-height: 80%;
+  overflow-y: scroll;
+  border-bottom: 1px solid rgba(79, 113, 54, 0.1);
+  color: rgba(79, 113, 54, 0.6);
+  /* Throws error in validation, but exists! Probably to new ... */
+  /* See: https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width; */
+  scrollbar-width: none; }
+  #history-wrapper::-webkit-scrollbar {
+    display: none; }
+
+.history-line {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  flex-shrink: 0;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  margin: .2vh 0;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow-x: scroll;
+  /* Throws error in validation, but exists! Probably to new ... */
+  /* See: https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width; */
+  scrollbar-width: none; }
+  .history-line:first-child {
+    margin-bottom: .8vh; }
+  .history-line::-webkit-scrollbar {
+    display: none; }
+
+.lower-part {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.button-wrapper {
+  width: 75%;
+  height: 70%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 2vh; }
+
+.calculator-button {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: inline-block;
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: inherit;
+  transition: unset;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  color: inherit;
+  background-color: inherit;
+  box-sizing: border-box;
+  background-color: #ebebeb;
+  box-shadow: 0 0.6vh 0 0 #c9c9c9;
+  border-radius: .4vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow .05s linear, transform .05s linear;
+  transform: translateY(0px); }
+  .calculator-button:focus {
+    outline: unset;
+    outline-offset: unset; }
+  .calculator-button:active {
+    transform: unset;
+    color: inherit; }
+  .digit.pressed {
+    -webkit-animation: digitpress .1s ease-in-out forwards;
+            animation: digitpress .1s ease-in-out forwards; }
+  .digit.released {
+    -webkit-animation: digitrelease .1s ease-in-out forwards;
+            animation: digitrelease .1s ease-in-out forwards; }
+
+@-webkit-keyframes digitpress {
+  from {
+    transform: translateY(0vh);
+    box-shadow: 0 0.6vh 0 0 #c9c9c9;}
+  to {
+    transform: translateY(0.4vh);
+    box-shadow: 0 0.2vh 0 0 #c9c9c9; }}
+
+@keyframes digitpress {
+  from {
+    transform: translateY(0vh);
+    box-shadow: 0 0.6vh 0 0 #c9c9c9;}
+  to {
+    transform: translateY(0.4vh);
+    box-shadow: 0 0.2vh 0 0 #c9c9c9; }}
+
+@-webkit-keyframes digitrelease {
+  from {
+    transform: translateY(0.4vh);
+    box-shadow: 0 0.2vh 0 0 #c9c9c9;}
+  to {
+    transform: translateY(0vh);
+    box-shadow: 0 0.6vh 0 0 #c9c9c9; }}
+
+@keyframes digitrelease {
+  from {
+    transform: translateY(0.4vh);
+    box-shadow: 0 0.2vh 0 0 #c9c9c9;}
+  to {
+    transform: translateY(0vh);
+    box-shadow: 0 0.6vh 0 0 #c9c9c9; }}
+
+.operator {
+  background-color: #b9b9b9;
+  box-shadow: 0 0.6vh 0 0 #a0a0a0;}
+  .operator.pressed {
+    -webkit-animation: operatorpress .1s ease-in-out forwards;
+            animation: operatorpress .1s ease-in-out forwards; }
+  .operator.released {
+    -webkit-animation: operatorrelease .1s ease-in-out forwards;
+            animation: operatorrelease .1s ease-in-out forwards; }
+  @-webkit-keyframes operatorpress {
+    from {
+      transform: translateY(0vh);
+      box-shadow: 0 0.6vh 0 0 #a0a0a0;}
+    to {
+      transform: translateY(0.4vh);
+      box-shadow: 0 0.2vh 0 0 #a0a0a0; }}
+  @keyframes operatorpress {
+    from {
+      transform: translateY(0vh);
+      box-shadow: 0 0.6vh 0 0 #a0a0a0;}
+    to {
+      transform: translateY(0.4vh);
+      box-shadow: 0 0.2vh 0 0 #a0a0a0; }}
+  @-webkit-keyframes operatorrelease {
+    from {
+      transform: translateY(0.4vh);
+      box-shadow: 0 0.2vh 0 0 #a0a0a0;}
+    to {
+      transform: translateY(0vh);
+      box-shadow: 0 0.6vh 0 0 #a0a0a0; }}
+  @keyframes operatorrelease {
+    from {
+      transform: translateY(0.4vh);
+      box-shadow: 0 0.2vh 0 0 #a0a0a0;}
+    to {
+      transform: translateY(0vh);
+      box-shadow: 0 0.6vh 0 0 #a0a0a0; }}
+
+#equality {
+  background-color: #e98657;
+  box-shadow: 0 0.6vh 0 0 #815f4e;}
+  #equality.pressed {
+    -webkit-animation: equalitypress .1s ease-in-out forwards;
+            animation: equalitypress .1s ease-in-out forwards; }
+  #equality.released {
+    -webkit-animation: equalityrelease .1s ease-in-out forwards;
+            animation: equalityrelease .1s ease-in-out forwards; }
+  @-webkit-keyframes equalitypress {
+    from {
+      transform: translateY(0vh);
+      box-shadow: 0 0.6vh 0 0 #815f4e;}
+    to {
+      transform: translateY(0.4vh);
+      box-shadow: 0 0.2vh 0 0 #815f4e; }}
+  @keyframes equalitypress {
+    from {
+      transform: translateY(0vh);
+      box-shadow: 0 0.6vh 0 0 #815f4e;}
+    to {
+      transform: translateY(0.4vh);
+      box-shadow: 0 0.2vh 0 0 #815f4e; }}
+  @-webkit-keyframes equalityrelease {
+    from {
+      transform: translateY(0.4vh);
+      box-shadow: 0 0.2vh 0 0 #815f4e;}
+    to {
+      transform: translateY(0vh);
+      box-shadow: 0 0.6vh 0 0 #815f4e; }}
+  @keyframes equalityrelease {
+    from {
+      transform: translateY(0.4vh);
+      box-shadow: 0 0.2vh 0 0 #815f4e;}
+    to {
+      transform: translateY(0vh);
+      box-shadow: 0 0.6vh 0 0 #815f4e; }}
+
