@@ -4,7 +4,7 @@ This calculator is based on HTML, CSS and Javascript and was created for a begin
 
 ### Code Quality
 
-Both of the authors are (at the time of this writing) absolute web devolepment beginners and this was one of their very first projects. If you have any improvement ideas or questions, please open an issue or a pull request. 
+Both of the authors are (at the time of this writing) absolute web devolepment novices and this was one of their very first projects. If you have any improvement ideas or questions, please open an issue or a pull request. 
 
 If you wan't to use the code, go ahead! But be warned, we didn't know what where doing, so you better do!
 
@@ -14,9 +14,11 @@ It's a calculator! A few not so obvious details are:
 
 - Automatic darkmode, triggered by the `@media (prefers-color-scheme: dark)` media query
 - Enter calculations using the keyboard
+- The ability to scroll overflowing lines horizontally
+- Clicking on a line in the history loads it as input
 
 ### TODO
 
-- [ ] Add actual calculator functionality
-- [ ] Add ability to click on a history item to reuse the calculation
+- [x] Add actual calculator functionality
+- [x] Add ability to click on a history item to reuse the calculation
 - [ ] Add an *AC* key
