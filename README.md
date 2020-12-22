@@ -1,5 +1,7 @@
 # JS Calc - A Ludicrously Simple Calculator
 
+![](screenshot.png)
+
 This calculator is based on HTML, CSS and Javascript and was created for a beginner project of the lecture *Web- und XML-Technologien* at the [Instute of Computer Science](https://www.informatik.uni-bonn.de/de) of the [Rheinische Friedrich-Wilhelms-Universität Bonn](https://www.uni-bonn.de). The resulting static page is available [here](https://lucaschultz.github.io/jscalc/).
 
 ### Code Quality
